@@ -15,7 +15,7 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @RequestMapping(value = "./books", method = RequestMethod.GET)
+    @RequestMapping(value = "/books", method = RequestMethod.GET)
     public String requestBookList(Model model) {
         List<Book> bookList = bookService.getAllBookList();
         model.addAttribute("bookList", bookList);
