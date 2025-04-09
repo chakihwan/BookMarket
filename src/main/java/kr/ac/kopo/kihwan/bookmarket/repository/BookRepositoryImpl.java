@@ -12,7 +12,6 @@ public class BookRepositoryImpl implements BookRepository {
     private List<Book> listOfBooks = new ArrayList<Book>();
 
     public BookRepositoryImpl() {
-
         Book book1 = new Book();
         book1.setBookID("ISBN0001");
         book1.setName("스프링부트완전정복");
@@ -71,4 +70,20 @@ public class BookRepositoryImpl implements BookRepository {
     public List<Book> getAllBookList() {
         return listOfBooks;
     }
+
+    @Override
+    public Book getBookById(String bookId) {
+        Book bookInfo = null;
+        for (Book book : listOfBooks) {
+            if (book != null && book.getBookID() != null && book.getBookID().equals(bookId)) {
+                bookInfo = book;
+                break;
+            }
+        }
+        if (bookInfo == null) {
+            throw new IllegalArgumentException("도서ID" + bookId +"인 해당 도서를 찾을 수 없습니다.");
+        }
+        return bookInfo;
+    }
+//    147page
 }
