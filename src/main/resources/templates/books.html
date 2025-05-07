@@ -68,6 +68,8 @@
 
         <div class="row align-items-md-stretch text-center">
             <div class="col-md-4" th:each="book:${bookList}">
+                <img th:src="'/BookMarket/images/'+${book.fileName}" alt="image"
+                     style="width:60%"/>
                 <h3 th:text="${book.getName()}"></h3>
                 <p th:text="${book.getAuthor()}"></p>
                 <p th:text="${book.getPublisher()} + '|' + ${book.getReleaseDate()}"></p>
@@ -76,7 +78,6 @@
                 <p><a th:href="'/BookMarket/books/book?id='+${book.getBookID()}" class="btn btn-secondary" role="button">상세정보 &raquo;</a></p>
             </div>
         </div>
-
         <footer class="pt-3 mt-4 text-body-secondary border-top">
             <span class="text-body-secondary">&copy; 2025 BookMarket</span>
         </footer>

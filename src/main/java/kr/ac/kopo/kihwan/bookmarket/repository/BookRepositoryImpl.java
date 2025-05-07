@@ -12,7 +12,7 @@ public class BookRepositoryImpl implements BookRepository {
 
     public BookRepositoryImpl() {
         Book book1 = new Book();
-        book1.setBookID("ISBN0001");
+        book1.setBookID("isbn0001");
         book1.setName("스프링부트완전정복");
         book1.setUnitPrice(BigDecimal.valueOf(35000));
         book1.setAuthor("송미영");
@@ -25,9 +25,10 @@ public class BookRepositoryImpl implements BookRepository {
         book1.setUnitInStock(1000);
         book1.setReleaseDate("2024/12/31");
         book1.setCondition("신규도서");
+        book1.setFileName("isbn0001.jpg");
 
         Book book2 = new Book();
-        book2.setBookID("ISBN0002");
+        book2.setBookID("isbn0002");
         book2.setName("자바스크립트입문");
         book2.setUnitPrice(BigDecimal.valueOf(29000));
         book2.setAuthor("조현영");
@@ -41,15 +42,16 @@ public class BookRepositoryImpl implements BookRepository {
         book2.setUnitInStock(1000);
         book2.setReleaseDate("2024/02/20");
         book2.setCondition("신규도서");
+        book2.setFileName("isbn0002.jpg");
 
         Book book3 = new Book();
-        book3.setBookID("ISBN0003");
+        book3.setBookID("isbn0003");
         book3.setName("파이썬의정석");
         book3.setUnitPrice(BigDecimal.valueOf(29800));
         book3.setAuthor("조용주,임좌상");
-        book3.setDescription("4차 산업혁명의 핵심인 머신러닝, 사물 인터넷(IoT), 데이터 분석 등 다양한 분야에 활용되는\n" +
-                "직관적이고 간결한 문법의 파이썬 프로그래밍 언어를 최신 트렌드에 맞게 예제 중심으로 학습\n" +
-                "할 수 있습니다.\n");
+        book3.setDescription("4차 산업혁명의 핵심인 머신러닝, 사물 인터넷(IoT), 데이터 분석 등 다양한 분야에 활용되는" +
+                "직관적이고 간결한 문법의 파이썬 프로그래밍 언어를 최신 트렌드에 맞게 예제 중심으로 학습" +
+                "할 수 있습니다.");
 //                + "무엇보다 프로그래밍을 처음 접하는 학생과 파이썬 초보자를 위한 파이썬 입문용 교육교재이\n" +
 //                "기 때문에 프로그래밍 언어 가운데 가장 쉽고 강력한 파이썬의 기초 내용부터 변수, 반복문,\n" +
 //                "자료구조, 객체 지향 프로그램의 탄탄한 활용까지 장별로 강화된 연습문제와 실무 프로젝트\n" +
@@ -59,6 +61,7 @@ public class BookRepositoryImpl implements BookRepository {
         book3.setUnitInStock(1000);
         book3.setReleaseDate("2023/01/10");
         book3.setCondition("신규도서");
+        book3.setFileName("isbn0003.jpg");
 
         listOfBooks.add(book1);
         listOfBooks.add(book2);
