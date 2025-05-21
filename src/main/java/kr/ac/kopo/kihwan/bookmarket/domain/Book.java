@@ -1,6 +1,7 @@
 package kr.ac.kopo.kihwan.bookmarket.domain;
 
 import jakarta.validation.constraints.*;
+import kr.ac.kopo.kihwan.bookmarket.validator.BookId;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import java.math.BigDecimal;
 @Data
 public class Book {
 //    유효성 검사 추가 2025-05-14
+    @BookId //20250521 추가
     @Pattern(regexp = "isbn[0-9]+")
     private String bookID;  //도서 ID
 
