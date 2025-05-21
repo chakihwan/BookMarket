@@ -22,7 +22,7 @@ public class BookRepositoryImpl implements BookRepository {
 //                " 개념-실습-프로젝트의 3단계 학습으로 스프링 부트를 제대로 익힌다면 개발 시간을 단축하고 생산성을 높일 수 있는 개발자로 성장할 수 있습니다.");
         book1.setPublisher("길벗");
         book1.setCategory("IT교재");
-        book1.setUnitInStock(1000);
+        book1.setUnitsInStock(1000);
         book1.setReleaseDate("2024/12/31");
         book1.setCondition("신규도서");
         book1.setFileName("isbn0001.jpg");
@@ -39,7 +39,7 @@ public class BookRepositoryImpl implements BookRepository {
 //                " 문법 학습과 실습이 적절히 섞여 있어 프로그램을 만드는 방법을 재미있게 익힐 수 있고, 이 과정에서 프로그램의 작동 원리를 자연스럽게 이해할 수 있습니다.");
         book2.setPublisher("길벗");
         book2.setCategory("IT전문서");
-        book2.setUnitInStock(1000);
+        book2.setUnitsInStock(1000);
         book2.setReleaseDate("2024/02/20");
         book2.setCondition("신규도서");
         book2.setFileName("isbn0002.jpg");
@@ -58,7 +58,7 @@ public class BookRepositoryImpl implements BookRepository {
 //                "등 규모 있는 프로그램으로 실력을 향상시킬 수 있습니다.");
         book3.setPublisher("한빛");
         book3.setCategory("IT전문서");
-        book3.setUnitInStock(1000);
+        book3.setUnitsInStock(1000);
         book3.setReleaseDate("2023/01/10");
         book3.setCondition("신규도서");
         book3.setFileName("isbn0003.jpg");
