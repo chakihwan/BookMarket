@@ -63,6 +63,11 @@
         </div>
 
         <div class="row align-items-md-stretch">
+            <div class="text-end" style="padding-right: 30px;">
+                <form action="/BookMarket/logout" method="post">
+                    <input type="submit" class="btn btn-sm btn-success" value="signout">
+                </form>
+            </div>
             <form th:object="${book}" action="/BookMarket/books/add" method="post" enctype="multipart/form-data">
                 <legend>신규 도서 등록</legend>
                 <div class="md-3 row">
