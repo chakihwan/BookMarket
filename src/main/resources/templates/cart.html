@@ -7,6 +7,7 @@
           rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
           crossorigin="anonymous">
+    <script src="/BookMarket/js/controllers.js"></script>
 </head>
 <body>
 <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
@@ -72,22 +73,24 @@
                         <th>도서</th>
                         <th>가격</th>
                         <th>수량</th>
-                        <th>소개</th>
+                        <th>소계</th>
                         <th>비고</th>
                         <th></th>
                     </tr>
+                    <form name="removeForm" method="post">
+                        <input type="hidden" name="_method" value="delete"/>
                     <div th:if="${cart != null}">
                         <div th:each="cartItem : ${cart.cartItems}">
                             <tr>
-                                <td th:text="${cartItem.value.book.bookId} + ' - ' + ${cartItem.value.book.name}"></td>
-                                <td th:text="${cartItem.value.book.bookId} + ' - ' + ${cartItem.value.book.name}"></td>
+                                <td th:text="${cartItem.value.book.bookID} + ' - ' + ${cartItem.value.book.name}"></td>
                                 <td th:text="${cartItem.value.book.unitPrice}"></td>
                                 <td th:text="${cartItem.value.quantity}"></td>
                                 <td th:text="${cartItem.value.totalPrice}"></td>
-                                <td></td>
+                                <td><a th:href="'javascript:removeFromCart(\''+ ${cartItem.value.book.bookID} +'\',\''+ ${cartId} +'\')'"><span class="badge text-bg-danger">삭제</span></a></td>
                             </tr>
                         </div>
                     </div>
+                    </form>
                 </table>
                 <div class="text-end" style="padding-right: 30px">
                     <b>총액</b>
@@ -99,10 +102,6 @@
                 <a href="/BookMarket/books" class="btn btn-secondary" role="button">&laquo;도서목록</a>
 
             </div>
-
-                <p><a href="#" class="btn btn-primary">도서 주문 &raquo;</a></p>
-                <p><a href="/BookMarket/books" class="btn btn-secondary" role="button">도서목록 &raquo;</a></p>
-
         </div>
 
         <footer class="pt-3 mt-4 text-body-secondary border-top">
