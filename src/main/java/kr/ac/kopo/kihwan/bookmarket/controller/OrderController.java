@@ -169,7 +169,7 @@ public class OrderController {
         return modelAndView;
     }
 
-    @GetMapping("/delete/{}")
+    @GetMapping("/delete/{id}")
     public String deleteOrder(@PathVariable(value = "id") Long id) {
         orderProService.delete(id);
         return "redirect:/order/list";
