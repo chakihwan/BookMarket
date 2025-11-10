@@ -22,7 +22,7 @@ public class SecurityConfig {
     protected PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
+/*
     @Bean
     protected UserDetailsService users() {
         UserDetails admin = User.builder()
@@ -32,6 +32,7 @@ public class SecurityConfig {
                 .build();
         return new InMemoryUserDetailsManager(admin);
     }
+*/
 
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -43,11 +44,15 @@ public class SecurityConfig {
                                 .anyRequest().permitAll()
                 )
 //                .formLogin(Customizer.withDefaults());
-                .formLogin(formLogin -> formLogin
+                .formLogin(
+                        formLogin -> formLogin
+                        
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/books/add")
-                        .failureUrl("/loginfailed")
+                        .defaultSuccessUrl("/books/add") //관리자 로그인 성공 후 이동 페이지
+                        .defaultSuccessUrl("/order/list") //관리자 로그인 성공 후 이동 페이지
+                        .defaultSuccessUrl("/") //일반 사용자 로그인 성공 후 페이지
+                        .failureUrl("/loginfailed") //로그인 실패시 이동 페이지
                         .usernameParameter("username")
                         .passwordParameter("password")
                 )
