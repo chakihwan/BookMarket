@@ -1,7 +1,9 @@
 package kr.ac.kopo.kihwan.bookmarket.service;
 
+import jakarta.transaction.Transactional;
 import kr.ac.kopo.kihwan.bookmarket.domain.Book;
 import kr.ac.kopo.kihwan.bookmarket.repository.BookRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,7 @@ import java.util.Set;
 @Service
 public class BookServiceImpl implements BookService {
 
+    // 이거 쓰면 알아서 찾아줌
     @Autowired
     private BookRepository bookRepository;
 
@@ -22,8 +25,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book getBookById(String bookId) {
-        Book book = bookRepository.getBookById(bookId);
-        return book;
+        Book bookInfo = bookRepository.getBookById(bookId);
+        return bookInfo;
     }
 
     @Override
@@ -33,7 +36,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Set<Book> getBookListByFilter(Map<String, List<String>> filter) {
+    public Set<Book> getBookListByFilter(Map<String, List<String>> filter)
+    {
         Set<Book> booksByFilter = bookRepository.getBookListByFilter(filter);
         return booksByFilter;
     }
@@ -42,4 +46,5 @@ public class BookServiceImpl implements BookService {
     public void setNewBook(Book book) {
         bookRepository.setNewBook(book);
     }
+
 }

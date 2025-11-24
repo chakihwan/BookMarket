@@ -16,7 +16,7 @@ public class Member {
     @Id
     @Column(name = "num")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long num;
+    private String num;
 
     @Column(unique = true)
     private String memberId;
@@ -28,7 +28,7 @@ public class Member {
     private String address;
 
     @Enumerated(EnumType.STRING)
-    private String role;
+    private Role role;
 
     public static Member createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder) {
         Member member = new Member();
@@ -39,7 +39,7 @@ public class Member {
         member.setPhone(memberFormDto.getPhone());
         member.setEmail(memberFormDto.getEmail());
         member.setAddress(memberFormDto.getAddress());
-        member.setRole(String.valueOf(Role.User));
+        member.setRole(Role.User);
 
         return member;
     }
