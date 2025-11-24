@@ -31,7 +31,7 @@ public class MemberService implements UserDetailsService {
     public void deleteMember(String memberId)
     {
         Member member = memberRepository.findByMemberId(memberId);
-        memberRepository.deleteById(member.getNum());
+        memberRepository.deleteById(String.valueOf(member.getNum()));
     }
 
     

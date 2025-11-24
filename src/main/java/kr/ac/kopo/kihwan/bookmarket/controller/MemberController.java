@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "/member")
+@RequestMapping(value = "/members")
 public class MemberController
 {
     @Autowired
@@ -38,7 +38,7 @@ public class MemberController
     //새로운 회원 Entity 추가
 
     @PostMapping(value = "/add")
-    public String submitAddNewMember(@Valid MemberFormDto memberFormDTO, BindingResult bindingResult, Model model)
+    public String submitAddNewMember(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model)
     {
 
         if(bindingResult.hasErrors())
@@ -48,7 +48,7 @@ public class MemberController
 
         try
         {
-            Member member = Member.createMember(memberFormDTO, passwordEncoder);
+            Member member = Member.createMember(memberFormDto, passwordEncoder);
             memberService.saveMember(member);
         }
         catch(IllegalStateException e)
