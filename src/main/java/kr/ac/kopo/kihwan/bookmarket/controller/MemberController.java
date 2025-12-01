@@ -57,7 +57,7 @@ public class MemberController
             return "member/addMember";
         }
 
-        return "member/members";
+        return "login";
     }
 
     // 회원 수정 폼

@@ -7,11 +7,11 @@
             <span class="fs-4">&nbsp;BookMarket</span>
         </a>
         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">도서목록</a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/BookMarket/books">전체도서</a></li>
-                <li><a class="dropdown-item" href="/BookMarket/books/IT전문서">IT전문서</a></li>
-                <li><a class="dropdown-item" href="/BookMarket/books/IT교재">IT교재</a></li>
-            </ul>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/BookMarket/books">전체도서</a></li>
+            <li><a class="dropdown-item" href="/BookMarket/books/IT전문서">IT전문서</a></li>
+            <li><a class="dropdown-item" href="/BookMarket/books/IT교재">IT교재</a></li>
+        </ul>
         &nbsp;|&nbsp;
         <a sec:authorzie="hasRole('ROLE_ADMIN')" href="/BookMarket/books/add" class="nav-link">도서등록 &nbsp;|&nbsp;</a>
         <a sec:authorzie="isAuthenticated()" href="/BookMarket/books/cart" class="nav-link">장바구니 &nbsp;|&nbsp;</a>
@@ -19,7 +19,7 @@
         <a href="/BookMarket/board/list" class="nav-link">게시판 &nbsp;|&nbsp;</a>
         <a sec:authorzie="isAnonymous()" href="/BookMarket/members/add" class="nav-link">회원가입 &nbsp;|&nbsp;</a>
         <a sec:authorzie="isAnonymous()" href="/BookMarket/login" class="nav-link">로그인 &nbsp;|&nbsp;</a>
-        <a sec:authorzie="isAuthenticated()" th:href="'/BookMarket/members/update'+${session.userLoginInfo?.memberId}" class="nav-link">회원수정 &nbsp;|&nbsp;</a>
+        <a sec:authorzie="isAuthenticated()" th:href="'/BookMarket/members/update'+${session.userLoginInfo.memberId}" class="nav-link">회원수정 &nbsp;|&nbsp;</a>
         <a sec:authorzie="isAuthenticated()" href="/BookMarket/logout" class="nav-link">로그아웃 &nbsp;|&nbsp;</a>
         <b sec:authorzie="isAuthenticated()"><span sec:authentication="name"></span>님</b>
     </div>
