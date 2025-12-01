@@ -1,4 +1,8 @@
-<header class="pb-3 mb-4 border-bottom" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<header class="pb-3 mb-4 border-bottom">
     <div class="container d-flex flex-wrap justify-content-center">
         <a href="/BookMarket/home" class="d-flex align-items-center text-body-emphasis text-decoration-none mb-3 mb-lg-0 me-lg-auto">
             <svg width="60px" height="60px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13,15 +17,33 @@
             <li><a class="dropdown-item" href="/BookMarket/books/IT교재">IT교재</a></li>
         </ul>
         &nbsp;|&nbsp;
-        <a sec:authorzie="hasRole('ROLE_ADMIN')" href="/BookMarket/books/add" class="nav-link">도서등록 &nbsp;|&nbsp;</a>
-        <a sec:authorzie="isAuthenticated()" href="/BookMarket/books/cart" class="nav-link">장바구니 &nbsp;|&nbsp;</a>
-        <a sec:authorzie="hasRole('ROLE_ADMIN')" href="/BookMarket/books/order/list" class="nav-link">주문목록 &nbsp;|&nbsp;</a>
+        <!-- 관리자만 -->
+        <a sec:authorize="hasRole('ROLE_ADMIN')" href="/BookMarket/books/add" class="nav-link">도서등록 &nbsp;|&nbsp;</a>
+
+        <!-- 로그인 한 사람만 -->
+        <a sec:authorize="isAuthenticated()" href="/BookMarket/books/cart" class="nav-link">장바구니 &nbsp;|&nbsp;</a>
+
+        <!-- 관리자만 -->
+        <a sec:authorize="hasRole('ROLE_ADMIN')" href="/BookMarket/books/order/list" class="nav-link">주문목록 &nbsp;|&nbsp;</a>
+
         <a href="/BookMarket/board/list" class="nav-link">게시판 &nbsp;|&nbsp;</a>
-        <a sec:authorzie="isAnonymous()" href="/BookMarket/members/add" class="nav-link">회원가입 &nbsp;|&nbsp;</a>
-        <a sec:authorzie="isAnonymous()" href="/BookMarket/login" class="nav-link">로그인 &nbsp;|&nbsp;</a>
-        <a sec:authorzie="isAuthenticated()" th:href="'/BookMarket/members/update'+${session.userLoginInfo.memberId}" class="nav-link">회원수정 &nbsp;|&nbsp;</a>
-        <a sec:authorzie="isAuthenticated()" href="/BookMarket/logout" class="nav-link">로그아웃 &nbsp;|&nbsp;</a>
-        <b sec:authorzie="isAuthenticated()"><span sec:authentication="name"></span>님</b>
+
+        <!-- 비로그인 전용 -->
+        <a sec:authorize="isAnonymous()" href="/BookMarket/members/add" class="nav-link">회원가입 &nbsp;|&nbsp;</a>
+        <a sec:authorize="isAnonymous()" href="/BookMarket/login" class="nav-link">로그인 &nbsp;|&nbsp;</a>
+
+        <!-- 로그인 전용: 회원수정 -->
+        <a sec:authorize="isAuthenticated()"
+           th:href="@{'/BookMarket/members/update/' + ${session.userLoginInfo.memberId}}"
+           class="nav-link">
+            회원수정 &nbsp;|&nbsp;
+        </a>
+
+        <!-- 로그인 전용: 로그아웃 + 이름 -->
+        <a sec:authorize="isAuthenticated()" href="/BookMarket/logout" class="nav-link">로그아웃 &nbsp;|&nbsp;</a>
+        <b sec:authorize="isAuthenticated()">
+            <span sec:authentication="name"></span>님
+        </b>
     </div>
 </header>
 
